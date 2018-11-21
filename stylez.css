@@ -1,0 +1,321 @@
+* {
+	border: px solid red;
+	font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}
+
+
+body {
+	background-image: url(marble.jpg);
+	background-size: cover;
+}
+
+.wrapper {
+	background-color: white;
+	width: 85%;
+	margin: 0 auto;
+	overflow: scroll;
+	position: relative;
+}
+
+.header {
+	text-align: center;
+	font-size: 20px;
+	padding: 1px;
+}
+
+.br {
+	color: darkgoldenrod;
+}
+
+.form {
+	padding: 3% 8%;
+	line-height: 25px;
+
+}
+
+.inputArea,
+.outputArea {
+	width: 49%;
+	display: inline-block;
+	float: left;
+
+}
+
+
+
+fieldset {
+	border-right: none;
+	border-left: none;
+}
+
+h2 {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	color: slategrey;
+}
+
+.outputContainer {
+	padding: 0 0;
+	line-height: 25px;
+}
+
+h3 {
+	margin: 0;
+}
+
+.content {
+	width: 85%;
+	margin: 1% 0 5% 13%;
+	background-color: #d7dee8;
+	padding: 8px;
+	border-radius: 5px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	box-shadow: -2px 2px 20px black;
+}
+
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+
+}
+
+.serverOutput {
+	border-top: 1px solid black;
+}
+
+
+.output {
+	border-top: 1px solid black;
+}
+
+.results {
+	color: darkgoldenrod;
+	padding-left: 7px;
+}
+
+#button {
+	background-color: black;
+	color: darkgoldenrod;
+	margin: 5% auto;
+	width: 50%;
+	text-align: center;
+	padding: 10px 10px;
+	border-radius: 60px;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-size: 20px;
+	letter-spacing: 2px;
+	box-shadow: -3px 5px 10px gray;
+}
+
+#button:hover {
+	cursor: pointer;
+
+}
+
+.calc {
+	height: 40px;
+	width: 40px;
+	float: left;
+	margin-top: 2px;
+}
+
+.brCalc {
+	float: left;
+	margin: 0;
+}
+
+.headerCenter {
+	display: inline-block;
+	margin: 5px 0 5px 8%;
+}
+
+.remain {
+	color: black;
+	font-style: italic;
+	font-size: .8em;
+}
+
+.equalSign {
+	color: darkgoldenrod;
+	position: absolute;
+	top: 48%;
+	left: 48%;
+	font-weight: bold;
+	font-size: 3.5rem;
+}
+
+/* //////////////////TOGGLE BUTTON/////////////////*/
+
+/*/////////////////////////////////////////////////*/
+
+
+
+#toggleWrapper {
+	display: inline-block;
+	float: right;
+	margin-top: 15px;
+}
+
+#toggleWrapper:hover {
+	cursor: pointer;
+
+}
+
+.left {
+	float: left;
+}
+
+/*header toggle*/
+.headerClass1,
+.headerClass2 {
+	padding: 2px 5px 0 0;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-weight: bold;
+}
+
+.headerClass1 {
+	color: gray;
+}
+
+.headerClass2 {
+	color: black;
+}
+
+/*background toggle*/
+.backgroundClass1,
+.backgroundClass2 {
+	height: 16px;
+	width: 32px;
+	display: inline-block;
+	border-radius: 30px;
+	padding: 4px;
+}
+
+.backgroundClass1 {
+	background-color: lightgray;
+}
+
+.backgroundClass2 {
+	background-color: black;
+}
+
+
+.circleClass1,
+.circleClass2 {
+	height: 16px;
+	width: 16px;
+	border-radius: 100px;
+}
+
+.circleClass1 {
+	background-color: white;
+	margin-left: 16px;
+}
+
+.circleClass2 {
+	background-color: darkgoldenrod;
+	margin-left: 0;
+}
+
+
+
+/* //////////////////MEDIA QUERY///////////////////*/
+
+/*/////////////////////////////////////////////////*/
+
+@media (max-width: 718px) {
+	.wrapper {
+		background-color: ed;
+		margin: 10% 0;
+		width: 100%;
+		font-size: 1.1rem;
+		overflow: hidden;
+	}
+
+	.inputArea,
+	.outputArea {
+		width: 100%;
+	}
+
+	.inputArea {
+		border-bottom: 1px solid black;
+	}
+
+	.equalSign {
+		display: none;
+	}
+
+	.headerCenter {
+		margin: 3%;
+		padding-left:
+
+	}
+
+	.content {
+		line-height: 25px;
+		font-weight: normal;
+		width: 100%;
+		margin-left: 0;
+	}
+
+	h3 {
+		padding: 0 0 10px 4px;
+		display: inline-block;
+		margin-top: 10px;
+
+	}
+
+	h2 {
+		padding: 20px;
+		background-color: ;
+		text-align: left;
+		color: darkgoldenrod;
+
+	}
+
+	input[type="text"] {
+		width: 60%;
+		height: 25px;
+		font-size: 1.1rem;
+		color: gray;
+		border-radius: 10px;
+	}
+
+	.busTipNotice {
+		display: block;
+		line-height: 35px
+	}
+
+	label {
+		line-height: 30px;
+		display: inline-block;
+	}
+
+	.header {}
+
+	.remain {
+		display: block;
+	}
+
+	#serverIcons {
+		display: block;
+		height: 65px;
+
+
+	}
+
+	.circles {
+		display: inline-block;
+		height: 27px;
+		width: 27px;
+		margin-right: -20px;
+		border-radius: 100px;
+		background: linear-gradient(rgba(215, 222, 232, .3), rgba(215, 222, 232, .3)),
+			url("Capture2.PNG") center/cover;
+		vertical-align: top;
+		margin-top: 9px
+	}
+}
