@@ -48,12 +48,12 @@
 						<label for="mdrInput">MDR Tips:</label><br>
 						<input type="text" id="mdrInput" placeholder="$0"><span class="busTipNotice"> (Requires Busser Tip Out)</span>
 					</fieldset>
-					<fieldset>
+					<fieldset class="defaultSpecific">
 						<label for="numServers">Number of Servers:</label><br>
 						<input type="text" id="numServers" placeholder="#">
 					</fieldset>
 					<!--<input type="button" id="button" value="Submit">-->
-					<p id="button">Submit</p>
+					<p id="button" class="defaultSpecific">Submit</p>
 				</form>
 			</div>
 
@@ -62,16 +62,16 @@
 				<div class="outputContainer">
 					<div class="output">
 						<div id="serverIcons">
-							<h3>Per Server:</h3>
+							<h3 class="defaultSpecific">Per Server:</h3>
 						</div>
-						<div class="content">
+						<div class="content defaultSpecific">
 							Sales:<span class="results" id="salesOutput"></span><span class="salesPerRemainder remain"></span><br> Tips (Before Tip Out):<span id="tipsBefore" class="results"></span><span class="tipsPerRemainder remain"></span><br> Bussers Tipped:<span id="busTipPer" class="results"></span><span class="busTipPerRemainder remain"></span><br> Bar Tipped:<span id="barTipPer" class="results"></span><span class="barTipPerRemainder remain"></span><br> Runner/Expo(s) Tipped:<span id="expoTipPer" class="results"></span><span class="expoTipPerRemainder remain"></span><br> Total Tip Out:<span id="serverTipOutTotals" class="results"></span><span class="totalTipOutPerRemainder remain"></span>
 							<hr> Cash Owed:<span id="cashOwed" class="results"></span><span class="cashOwedPerRemainder remain"></span><br> Claimed Tips:<span id="claimedTips" class="results"></span><span class="totalWalkPerRemainder remain"></span><br>
 						</div>
 					</div>
 					<div class="tipOutOutput">
-						<h3>Tip Out Totals:</h3>
-						<div class="content">
+						<h3 class="defaultSpecific">Tip Out Totals:</h3>
+						<div class="content defaultSpecific">
 							Busser:<span id="busTotalTipOut" class="results"></span><br> Bar:
 							<span id="barTotalTipOut" class="results"></span><br> Runner/Expo:
 							<span id="runTotalTipOut" class="results"></span><br> Total Tip Out:<span id="totalTotalTipOut" class="results"></span><br>
