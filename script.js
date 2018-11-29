@@ -21,7 +21,7 @@ var sales,
 	busTipsPerServer,
 	barTipsPerServer,
 	totalTipOutPerServer;
-var remaindersArray = [];
+var defaultRemaindersArray = [];
 
 button = document.getElementById("button");
 
@@ -46,7 +46,7 @@ button.addEventListener("click", function () {
 
 	calculate();
 	print();
-	remainders();
+	defaultRemainder();
 
 	button.style.display = "none";
 	fieldsetBottom();
@@ -111,36 +111,36 @@ function print() {
 	spanTotalTotalTipOut.textContent = "  $" + totalTipOut.toFixed(2);
 }
 
-function remainders() {
+function defaultRemainder() {
 	var salesPerRemainder = (sales - (salesPer * numServers)).toFixed(2);
-	remaindersArray.push(salesPerRemainder);
+	defaultRemaindersArray.push(salesPerRemainder);
 
 	var tipsPerRemainder = (totalTips - (perServerTips * numServers)).toFixed(2);
-	remaindersArray.push(tipsPerRemainder);
+	defaultRemaindersArray.push(tipsPerRemainder);
 
 	var busTipPerRemainder = (busTips - (busTipsPerServer * numServers)).toFixed(2);
-	remaindersArray.push(busTipPerRemainder);
+	defaultRemaindersArray.push(busTipPerRemainder);
 
 	var barTipPerRemainder = (barTips - (barTipsPerServer * numServers)).toFixed(2);
-	remaindersArray.push(barTipPerRemainder);
+	defaultRemaindersArray.push(barTipPerRemainder);
 
 	var expoTipPerRemainder = (expoTips - (expoTipsPerServer * numServers)).toFixed(2);
-	remaindersArray.push(expoTipPerRemainder);
+	defaultRemaindersArray.push(expoTipPerRemainder);
 
 	var totalTipOutPerRemainder = (totalTipOut - (totalTipOutPerServer * numServers)).toFixed(2);
-	remaindersArray.push(totalTipOutPerRemainder);
+	defaultRemaindersArray.push(totalTipOutPerRemainder);
 
 	var cashOwedPerRemainder = (cashTips - (cashOwed * numServers)).toFixed(2);
-	remaindersArray.push(cashOwedPerRemainder);
+	defaultRemaindersArray.push(cashOwedPerRemainder);
 
 	var totalwalkPerRemainder = (walkTips - (walkPerServer * numServers)).toFixed(2);
-	remaindersArray.push(totalwalkPerRemainder);
+	defaultRemaindersArray.push(totalwalkPerRemainder);
 
-	var remainderSpan = document.getElementsByClassName("remain");
+	var defaultRemainderSpan = document.getElementsByClassName("remain");
 
-	for (var i = 0; i < remainderSpan.length; i++) {
-		if (remaindersArray[i] > 0) {
-			remainderSpan[i].textContent = "  (remainder: $" + remaindersArray[i] + ")";
+	for (var i = 0; i < defaultRemainderSpan.length; i++) {
+		if (defaultRemaindersArray[i] > 0) {
+			defaultRemainderSpan[i].textContent = "  (remainder: $" + defaultRemaindersArray[i] + ")";
 		}
 	}
 }
