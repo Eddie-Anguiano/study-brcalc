@@ -9,6 +9,48 @@ body {
 	background-size: cover;
 }
 
+.employeeNameWrapper {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#employeeName {
+	width: 200px;
+	text-align: center;
+}
+
+.hoursWrapper,
+.minsWrapper {
+	line-height: 17px;
+	float: left;
+}
+
+#hours,
+#mins {
+	width: 50px;
+}
+
+.minsWrapper {
+	padding-left: 10px;
+}
+
+.timeWrapper {
+	width: 80%;
+	margin: 0 auto;
+	padding-left: 135px;
+}
+
+
+
+.addEmployee,
+.queueContentArea {
+	background-color: #d7dee8;
+	border-radius: 5px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	box-shadow: -2px 2px 20px black;
+}
+
 .wrapper {
 	background-color: white;
 	width: 85%;
@@ -28,8 +70,9 @@ body {
 }
 
 .form {
-	padding: 3% 8%;
+	padding: 0 8% 3% 8%;
 	line-height: 25px;
+
 
 }
 
@@ -96,13 +139,14 @@ h3 {
 	padding-left: 7px;
 }
 
-#button {
+#button,
+#addButton {
 	background-color: black;
 	color: darkgoldenrod;
 	margin: 5% auto;
 	width: 50%;
 	text-align: center;
-	padding: 10px 10px;
+	padding: 10px;
 	border-radius: 60px;
 	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 	font-size: 20px;
@@ -113,6 +157,11 @@ h3 {
 #button:hover {
 	cursor: pointer;
 
+}
+
+
+.addButton {
+	display: inline-block;
 }
 
 .calc {
@@ -138,14 +187,7 @@ h3 {
 	font-size: .8em;
 }
 
-.equalSign {
-	color: darkgoldenrod;
-	position: absolute;
-	top: 48%;
-	left: 48%;
-	font-weight: bold;
-	font-size: 3.5rem;
-}
+
 
 /* //////////////////TOGGLE BUTTON/////////////////*/
 
@@ -244,9 +286,6 @@ h3 {
 		border-bottom: 1px solid black;
 	}
 
-	.equalSign {
-		display: none;
-	}
 
 	.headerCenter {
 		margin: 3%;

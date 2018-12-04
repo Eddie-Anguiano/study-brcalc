@@ -1,6 +1,12 @@
 /*eslint-env browser*/
 
-
+function hideHourlySpecific() {
+	var hourlySpecificClasses = document.getElementsByClassName("hourlySpecific");
+	for (var i = 0; i < hourlySpecificClasses.length; i++) {
+		hourlySpecificClasses[i].style.display = "none";
+	}
+}
+hideHourlySpecific();
 
 var button = document.getElementById("button");
 
@@ -201,7 +207,8 @@ function round(number) {
 var toggleButton = document.getElementById("toggleWrapper");
 
 toggleButton.addEventListener("click", function () {
-	function toggleClasses() {
+
+	function toggleSwitchDom() {
 		var toggleHeader = document.getElementById("toggleHeader");
 		var toggleBackground = document.getElementById("toggleBackground");
 		var toggleCircle = document.getElementById("toggleCircle");
@@ -224,5 +231,23 @@ toggleButton.addEventListener("click", function () {
 			toggleCircle.className = "circleClass1";
 		}
 	}
-	toggleClasses();
+
+	function clearDefaultSpecific() {
+		var defaultSpecificClasses = document.getElementsByClassName("defaultSpecific");
+		var hourlySpecificClasses = document.getElementsByClassName("hourlySpecific");
+
+		for (var i = 0; i < hourlySpecificClasses.length; i++) {
+			hourlySpecificClasses[i].style.display = "";
+		}
+
+		for (var j = 0; j < defaultSpecificClasses.length; j++) {
+			defaultSpecificClasses[j].style.display = "none";
+		}
+
+
+
+	}
+
+	toggleSwitchDom();
+	clearDefaultSpecific();
 })

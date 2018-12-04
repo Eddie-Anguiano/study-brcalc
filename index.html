@@ -11,7 +11,7 @@
 
 <body>
 	<div class="wrapper">
-		<span class="equalSign">=</span>
+
 
 		<div class="header clearfix">
 			<div id="toggleWrapper">
@@ -52,6 +52,27 @@
 						<label for="numServers">Number of Servers:</label><br>
 						<input type="text" id="numServers" placeholder="#">
 					</fieldset>
+					<fieldset class="hourlySpecific addEmployee">
+						<div class="employeeNameWrapper">
+							<label for="employeeName">Employee Name:</label><br>
+							<input type="text" id="employeeName" placeholder="First Last"><br>
+						</div>
+						Time Worked:
+						<div class="timeWrapper clearfix">
+
+							<div class="hoursWrapper">
+								<label for="hours">Hours:</label><br>
+								<input type="text" id="hours">
+							</div>
+							<div class="minsWrapper">
+								<label for="mins">Minutes:</label><br>
+								<input type="text" id="mins">
+							</div>
+						</div>
+						<div class="addButtonWrapper hourlySpecific">
+							<p id="addButton">+ add</p>
+						</div>
+					</fieldset>
 					<!--<input type="button" id="button" value="Submit">-->
 					<p id="button" class="defaultSpecific">Submit</p>
 				</form>
@@ -60,17 +81,21 @@
 			<div class="outputArea">
 				<h2>Output</h2>
 				<div class="outputContainer">
-					<div class="output">
+					<div class="queueContentArea hourlySpecific">
+						<h3>Queue:</h3>
+					</div>
+					<div class="output defaultSpecific">
+
 						<div id="serverIcons">
-							<h3 class="defaultSpecific">Per Server:</h3>
+							<h3>Per Server:</h3>
 						</div>
 						<div class="content defaultSpecific">
 							Sales:<span class="results" id="salesOutput"></span><span class="salesPerRemainder remain"></span><br> Tips (Before Tip Out):<span id="tipsBefore" class="results"></span><span class="tipsPerRemainder remain"></span><br> Bussers Tipped:<span id="busTipPer" class="results"></span><span class="busTipPerRemainder remain"></span><br> Bar Tipped:<span id="barTipPer" class="results"></span><span class="barTipPerRemainder remain"></span><br> Runner/Expo(s) Tipped:<span id="expoTipPer" class="results"></span><span class="expoTipPerRemainder remain"></span><br> Total Tip Out:<span id="serverTipOutTotals" class="results"></span><span class="totalTipOutPerRemainder remain"></span>
 							<hr> Cash Owed:<span id="cashOwed" class="results"></span><span class="cashOwedPerRemainder remain"></span><br> Claimed Tips:<span id="claimedTips" class="results"></span><span class="totalWalkPerRemainder remain"></span><br>
 						</div>
 					</div>
-					<div class="tipOutOutput">
-						<h3 class="defaultSpecific">Tip Out Totals:</h3>
+					<div class="tipOutOutput defaultSpecific">
+						<h3>Tip Out Totals:</h3>
 						<div class="content defaultSpecific">
 							Busser:<span id="busTotalTipOut" class="results"></span><br> Bar:
 							<span id="barTotalTipOut" class="results"></span><br> Runner/Expo:
