@@ -177,7 +177,6 @@ button.addEventListener("click", function () {
 		iconCircles();
 	}
 
-
 	getStringInput();
 	validateInputArray();
 	convertInputToFloat();
@@ -187,21 +186,9 @@ button.addEventListener("click", function () {
 	fixDefaultDom();
 });
 
-
-
-
-
-
 function round(number) {
 	return Math.floor(number * Math.pow(10, 2)) / Math.pow(10, 2);
 }
-
-
-
-
-
-
-
 
 //toggle button
 var toggleButton = document.getElementById("toggleWrapper");
@@ -243,11 +230,58 @@ toggleButton.addEventListener("click", function () {
 		for (var j = 0; j < defaultSpecificClasses.length; j++) {
 			defaultSpecificClasses[j].style.display = "none";
 		}
+	}
+	toggleSwitchDom();
+	clearDefaultSpecific();
+})
 
+var addButton = document.getElementById("addButton");
 
+var allData = [];
+var serverCount = 0;
+var totalHours = 0;
+
+function convertTimeToDecimal(hours, mins) {
+	var decimalMins = round(mins / 60);
+	return hours + decimalMins;
+}
+
+addButton.addEventListener("click", function () {
+	var employeeName = document.getElementById("employeeName").value;
+	var hours = parseFloat(document.getElementById("hours").value);
+	var mins = parseFloat(document.getElementById("mins").value);
+	var employeeTime = convertTimeToDecimal(hours, mins);
+
+	allData.push({
+		name: employeeName,
+		time: employeeTime
+	})
+
+	serverCount += 1;
+
+	function addHours(array) {
+		totalHours = 0;
+		for (var i = 0; i < array.length; i++) {
+			totalHours += array[i].time;
+		}
+	}
+
+	addHours(allData);
+	displayHourlyStats();
+	displayServerList();
+	console.table(allData);
+
+	function displayHourlyStats() {
+		var displayStats = document.querySelector(".hourlyStats");
+		displayStats.textContent = " \xa0\xa0\xa0\xa0" + serverCount + " Servers \xa0\xa0\xa0\xa0Total Hours: " + totalHours.toFixed(2);
+	}
+
+	function displayServerList() {
+		var ul = document.querySelector(".serverList");
+		var li = document.createElement("li");
+		li.textContent = "Name: " + allData[serverCount - 1].name + " \xa0\xa0Hours: " + allData[serverCount - 1].time;
+		ul.appendChild(li);
 
 	}
 
-	toggleSwitchDom();
-	clearDefaultSpecific();
 })

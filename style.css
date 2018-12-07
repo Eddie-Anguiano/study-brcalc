@@ -48,7 +48,7 @@ body {
 	border-radius: 5px;
 	border-bottom: 1px solid black;
 	border-left: 1px solid black;
-	box-shadow: -2px 2px 20px black;
+	box-shadow: -2px 2px 10px black;
 }
 
 .wrapper {
@@ -115,7 +115,7 @@ h3 {
 	border-radius: 5px;
 	border-bottom: 1px solid black;
 	border-left: 1px solid black;
-	box-shadow: -2px 2px 20px black;
+	box-shadow: -2px 2px 10px black;
 }
 
 .clearfix::after {
@@ -140,7 +140,8 @@ h3 {
 }
 
 #button,
-#addButton {
+#addButton,
+#submitHourly {
 	background-color: black;
 	color: darkgoldenrod;
 	margin: 5% auto;
@@ -154,15 +155,17 @@ h3 {
 	box-shadow: -3px 5px 10px gray;
 }
 
-#button:hover {
+#button,
+#submitHourly,
+#addButton:hover {
 	cursor: pointer;
 
 }
 
-
-.addButton {
-	display: inline-block;
+#queueId {
+	display: inline;
 }
+
 
 .calc {
 	height: 40px;
