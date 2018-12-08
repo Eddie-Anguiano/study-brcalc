@@ -1,4 +1,32 @@
 /*eslint-env browser*/
+var numServers,
+	totalTips,
+	walkTips,
+	busTips,
+	barTips,
+	totalExpoTips,
+	totalTipOut;
+var allData = [],
+	serverCount = 0,
+	totalHours = 0;
+var button = document.getElementById("button"),
+	toggleButton = document.getElementById("toggleWrapper"),
+	addButton = document.getElementById("addButton"),
+	sales = document.getElementById("salesInput"),
+	ccTips = document.getElementById("ccTipsInput"),
+	cashTips = document.getElementById("cashTipsInput"),
+	mdrTips = document.getElementById("mdrInput");
+
+function convertInputToFloat() {
+	sales = parseFloat(sales.value);
+	ccTips = parseFloat(ccTips.value);
+	cashTips = parseFloat(cashTips.value);
+	mdrTips = parseFloat(mdrTips.value);
+
+	if (numServers.style.display !== "none") {
+		numServers = parseInt(numServers.value);
+	}
+}
 
 function hideHourlySpecific() {
 	var hourlySpecificClasses = document.getElementsByClassName("hourlySpecific");
@@ -6,24 +34,30 @@ function hideHourlySpecific() {
 		hourlySpecificClasses[i].style.display = "none";
 	}
 }
-hideHourlySpecific();
 
-var button = document.getElementById("button");
+function round(number) {
+	return Math.floor(number * Math.pow(10, 2)) / Math.pow(10, 2);
+}
+
+function convertTimeToDecimal(hours, mins) {
+	var decimalMins = round(mins / 60);
+	return hours + decimalMins;
+}
+
+function validateInputArray() {
+	var inputsArray = document.getElementsByTagName("input");
+
+	for (var i = 0; i < inputsArray.length; i++) {
+		if (inputsArray[i].value === "" && inputsArray[i].style.display !== 'none') {
+			inputsArray[i].value = 0;
+		}
+	}
+}
+
 
 button.addEventListener("click", function () {
-	var sales,
-		salesPer,
-		walkTips,
-		numServers,
+	var salesPer,
 		walkPerServer,
-		totalTips,
-		totalTipOut,
-		ccTips,
-		cashTips,
-		mdrTips,
-		expoTips,
-		busTips,
-		barTips,
 		cashOwed,
 		perServerTips,
 		expoTipsPerServer,
@@ -32,33 +66,11 @@ button.addEventListener("click", function () {
 		totalTipOutPerServer;
 	var defaultRemaindersArray = [];
 
-	function getStringInput() {
-		sales = document.getElementById("salesInput");
-		ccTips = document.getElementById("ccTipsInput");
-		cashTips = document.getElementById("cashTipsInput");
-		mdrTips = document.getElementById("mdrInput");
-		numServers = document.getElementById("numServers");
-	}
 
-	function validateInputArray() {
-		var inputsArray = document.getElementsByTagName("input");
+	numServers = document.getElementById("numServersInput");
 
-		for (var i = 0; i < inputsArray.length; i++) {
-			if (inputsArray[i].value === "") {
-				inputsArray[i].value = 0;
-			}
-		}
-	}
 
-	function convertInputToFloat() {
-		sales = parseFloat(sales.value);
-		ccTips = parseFloat(ccTips.value);
-		cashTips = parseFloat(cashTips.value);
-		mdrTips = parseFloat(mdrTips.value);
-		numServers = parseInt(numServers.value);
-	}
-
-	function calculate() {
+	function calculateDefault() {
 		//The sales per server
 		salesPer = round(sales / numServers);
 		//All tips made on night
@@ -66,15 +78,15 @@ button.addEventListener("click", function () {
 		//Tips before tip out per server
 		perServerTips = round(totalTips / numServers);
 		//Tip out by position
-		expoTips = round(totalTips * 0.05);
+		totalExpoTips = round(totalTips * 0.05);
 		busTips = round(mdrTips * 0.1);
 		barTips = round(totalTips * 0.05);
 		//Tip out by positon per server
-		expoTipsPerServer = round(expoTips / numServers);
+		expoTipsPerServer = round(totalExpoTips / numServers);
 		busTipsPerServer = round(busTips / numServers);
 		barTipsPerServer = round(barTips / numServers);
 		//All tips out
-		totalTipOut = expoTips + busTips + barTips;
+		totalTipOut = totalExpoTips + busTips + barTips;
 		//Total tip out per server
 		totalTipOutPerServer = expoTipsPerServer + busTipsPerServer + barTipsPerServer;
 		//total tips after tip out
@@ -112,7 +124,7 @@ button.addEventListener("click", function () {
 		//Tip Out Totals
 		spanBusTotalTipOut.textContent = "  $" + busTips.toFixed(2);
 		spanBarTotalTipOut.textContent = "  $" + barTips.toFixed(2);
-		spanRunTotalTipOut.textContent = "  $" + expoTips.toFixed(2);
+		spanRunTotalTipOut.textContent = "  $" + totalExpoTips.toFixed(2);
 		spanTotalTotalTipOut.textContent = "  $" + totalTipOut.toFixed(2);
 	}
 
@@ -129,7 +141,7 @@ button.addEventListener("click", function () {
 		var barTipPerRemainder = (barTips - (barTipsPerServer * numServers)).toFixed(2);
 		defaultRemaindersArray.push(barTipPerRemainder);
 
-		var expoTipPerRemainder = (expoTips - (expoTipsPerServer * numServers)).toFixed(2);
+		var expoTipPerRemainder = (totalExpoTips - (expoTipsPerServer * numServers)).toFixed(2);
 		defaultRemaindersArray.push(expoTipPerRemainder);
 
 		var totalTipOutPerRemainder = (totalTipOut - (totalTipOutPerServer * numServers)).toFixed(2);
@@ -172,29 +184,21 @@ button.addEventListener("click", function () {
 				}
 			}
 		}
+
+
 		removeButton();
 		removeBorderBottom();
 		iconCircles();
 	}
 
-	getStringInput();
 	validateInputArray();
 	convertInputToFloat();
-	calculate();
+	calculateDefault();
 	printDefaultSpans();
 	defaultRemainder();
 	fixDefaultDom();
 });
-
-function round(number) {
-	return Math.floor(number * Math.pow(10, 2)) / Math.pow(10, 2);
-}
-
-//toggle button
-var toggleButton = document.getElementById("toggleWrapper");
-
 toggleButton.addEventListener("click", function () {
-
 	function toggleSwitchDom() {
 		var toggleHeader = document.getElementById("toggleHeader");
 		var toggleBackground = document.getElementById("toggleBackground");
@@ -231,33 +235,17 @@ toggleButton.addEventListener("click", function () {
 			defaultSpecificClasses[j].style.display = "none";
 		}
 	}
+
+
 	toggleSwitchDom();
 	clearDefaultSpecific();
 })
-
-var addButton = document.getElementById("addButton");
-
-var allData = [];
-var serverCount = 0;
-var totalHours = 0;
-
-function convertTimeToDecimal(hours, mins) {
-	var decimalMins = round(mins / 60);
-	return hours + decimalMins;
-}
-
 addButton.addEventListener("click", function () {
 	var employeeName = document.getElementById("employeeName").value;
 	var hours = parseFloat(document.getElementById("hours").value);
 	var mins = parseFloat(document.getElementById("mins").value);
 	var employeeTime = convertTimeToDecimal(hours, mins);
 
-	allData.push({
-		name: employeeName,
-		time: employeeTime
-	})
-
-	serverCount += 1;
 
 	function addHours(array) {
 		totalHours = 0;
@@ -266,22 +254,32 @@ addButton.addEventListener("click", function () {
 		}
 	}
 
-	addHours(allData);
-	displayHourlyStats();
-	displayServerList();
-	console.table(allData);
-
 	function displayHourlyStats() {
 		var displayStats = document.querySelector(".hourlyStats");
+
 		displayStats.textContent = " \xa0\xa0\xa0\xa0" + serverCount + " Servers \xa0\xa0\xa0\xa0Total Hours: " + totalHours.toFixed(2);
 	}
 
 	function displayServerList() {
 		var ul = document.querySelector(".serverList");
 		var li = document.createElement("li");
+
 		li.textContent = "Name: " + allData[serverCount - 1].name + " \xa0\xa0Hours: " + allData[serverCount - 1].time;
 		ul.appendChild(li);
 
 	}
 
+
+	allData.push({
+		name: employeeName,
+		time: employeeTime
+	})
+	serverCount += 1;
+	addHours(allData);
+	displayHourlyStats();
+	displayServerList();
+	console.table(allData);
 })
+
+
+hideHourlySpecific();
