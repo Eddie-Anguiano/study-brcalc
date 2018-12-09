@@ -1,5 +1,9 @@
 /*eslint-env browser*/
 var numServers,
+	sales,
+	ccTips,
+	cashTips,
+	mdrTips,
 	totalTips,
 	walkTips,
 	busTips,
@@ -7,25 +11,30 @@ var numServers,
 	totalExpoTips,
 	totalTipOut;
 var allData = [],
-	serverCount = 0,
+	hourlyServerCount = 0,
 	totalHours = 0;
 var button = document.getElementById("button"),
 	toggleButton = document.getElementById("toggleWrapper"),
 	addButton = document.getElementById("addButton"),
-	sales = document.getElementById("salesInput"),
-	ccTips = document.getElementById("ccTipsInput"),
-	cashTips = document.getElementById("cashTipsInput"),
+	submitHourlybutton = document.getElementById("submitHourly");
+
+function getActiveInputs() {
+	sales = document.getElementById("salesInput");
+	ccTips = document.getElementById("ccTipsInput");
+	cashTips = document.getElementById("cashTipsInput");
 	mdrTips = document.getElementById("mdrInput");
+	numServers = document.getElementById("numServersInput");
+
+
+}
 
 function convertInputToFloat() {
 	sales = parseFloat(sales.value);
 	ccTips = parseFloat(ccTips.value);
 	cashTips = parseFloat(cashTips.value);
 	mdrTips = parseFloat(mdrTips.value);
+	numServers = parseInt(numServers.value);
 
-	if (numServers.style.display !== "none") {
-		numServers = parseInt(numServers.value);
-	}
 }
 
 function hideHourlySpecific() {
@@ -48,7 +57,7 @@ function validateInputArray() {
 	var inputsArray = document.getElementsByTagName("input");
 
 	for (var i = 0; i < inputsArray.length; i++) {
-		if (inputsArray[i].value === "" && inputsArray[i].style.display !== 'none') {
+		if (inputsArray[i].value === "") {
 			inputsArray[i].value = 0;
 		}
 	}
@@ -66,8 +75,6 @@ button.addEventListener("click", function () {
 		totalTipOutPerServer;
 	var defaultRemaindersArray = [];
 
-
-	numServers = document.getElementById("numServersInput");
 
 
 	function calculateDefault() {
@@ -191,6 +198,7 @@ button.addEventListener("click", function () {
 		iconCircles();
 	}
 
+	getActiveInputs();
 	validateInputArray();
 	convertInputToFloat();
 	calculateDefault();
@@ -257,14 +265,14 @@ addButton.addEventListener("click", function () {
 	function displayHourlyStats() {
 		var displayStats = document.querySelector(".hourlyStats");
 
-		displayStats.textContent = " \xa0\xa0\xa0\xa0" + serverCount + " Servers \xa0\xa0\xa0\xa0Total Hours: " + totalHours.toFixed(2);
+		displayStats.textContent = " \xa0\xa0\xa0\xa0" + hourlyServerCount + " Servers \xa0\xa0\xa0\xa0Total Hours: " + totalHours.toFixed(2);
 	}
 
 	function displayServerList() {
 		var ul = document.querySelector(".serverList");
 		var li = document.createElement("li");
 
-		li.textContent = "Name: " + allData[serverCount - 1].name + " \xa0\xa0Hours: " + allData[serverCount - 1].time;
+		li.textContent = "Name: " + allData[hourlyServerCount - 1].name + " \xa0\xa0Hours: " + allData[hourlyServerCount - 1].time;
 		ul.appendChild(li);
 
 	}
@@ -274,10 +282,16 @@ addButton.addEventListener("click", function () {
 		name: employeeName,
 		time: employeeTime
 	})
-	serverCount += 1;
+	hourlyServerCount += 1;
 	addHours(allData);
 	displayHourlyStats();
 	displayServerList();
+	//console.table(allData);
+})
+submitHourlybutton.addEventListener("click", function () {
+	getActiveInputs();
+	validateInputArray();
+	convertInputToFloat();
 	console.table(allData);
 })
 
