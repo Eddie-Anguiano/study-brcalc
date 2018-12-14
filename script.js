@@ -289,9 +289,48 @@ addButton.addEventListener("click", function () {
 	//console.table(allData);
 })
 submitHourlybutton.addEventListener("click", function () {
+	var byHourlyEmployeeSales = "byHourlyEmployeeSales";
+	var byHourlyEmployeeTips = "byHourlyEmployeeTips";
+	var byHourlyEmployeeBusTips = "byHourlyEmployeeBusTips";
+	var byHourlyEmployeeBarTips = "byHourlyEmployeeBarTips";
+	var byHourlyEmployeeExpoTips = "byHourlyEmployeeExpoTips";
+	var byHourlyEmployeeTotalTipOut = "byHourlyEmployeeTotalTipOut";
+	var byHourlyEmployeeCashOwed = "byHourlyEmployeeCashOwed";
+	var byHourlyEmployeeClaimedTips = "byHourlyEmployeeClaimedTips";
+
+	function calculateTotals() {
+		totalTips = ccTips + cashTips;
+		busTips = round(mdrTips * 0.1);
+		barTips = round(totalTips * 0.05);
+		totalExpoTips = totalTips * 0.05;
+		totalTipOut = totalExpoTips + busTips + barTips;
+		walkTips = totalTips - totalTipOut;
+	}
+
+	function calculatePerHour(totalVariable, newObjKey) {
+		var perHourVariable = totalVariable / totalHours;
+
+		for (var i = 0; i < allData.length; i++) {
+			allData[i][newObjKey] = perHourVariable * allData[i].time;
+		}
+	}
+
+	function calculateAllPerHours() {
+		calculatePerHour(sales, byHourlyEmployeeSales);
+		calculatePerHour(totalTips, byHourlyEmployeeTips);
+		calculatePerHour(busTips, byHourlyEmployeeBusTips);
+		calculatePerHour(barTips, byHourlyEmployeeBarTips);
+		calculatePerHour(totalExpoTips, byHourlyEmployeeExpoTips);
+		calculatePerHour(totalTipOut, byHourlyEmployeeTotalTipOut);
+		calculatePerHour(cashTips, byHourlyEmployeeCashOwed);
+		calculatePerHour(walkTips, byHourlyEmployeeClaimedTips);
+	}
+
 	getActiveInputs();
 	validateInputArray();
 	convertInputToFloat();
+	calculateTotals();
+	calculateAllPerHours();
 	console.table(allData);
 })
 
