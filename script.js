@@ -272,10 +272,13 @@ addButton.addEventListener("click", function () {
 		var ul = document.querySelector(".serverList");
 		var li = document.createElement("li");
 
+		li.className = "serverListLI";
 		li.textContent = "Name: " + allData[hourlyServerCount - 1].name + " \xa0\xa0Hours: " + allData[hourlyServerCount - 1].time;
 		ul.appendChild(li);
 
 	}
+
+
 
 
 	allData.push({
