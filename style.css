@@ -1,6 +1,6 @@
 * {
-	border: px solid red;
-	font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+/*	border: 1px solid red;
+	*/	font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
 
 
@@ -17,6 +17,11 @@ body {
 #employeeName {
 	width: 200px;
 	text-align: center;
+}
+
+table {
+	width: 100%;
+	padding: 10px;
 }
 
 .hoursWrapper,
@@ -40,15 +45,41 @@ body {
 	text-align: center;
 }
 
+.nameDiv {
+	text-align: center;
+}
+
+.nameOutputDiv {
+	display: inline-block;
+	margin: 10px 0 0 23px;
+}
+
+.hourlyNameIcon {
+	display: inline-block;
+	height: 27px;
+	width: 27px;
+	margin-right: -20px;
+	border-radius: 100px;
+	background: linear-gradient(rgba(215, 222, 232, .3), rgba(215, 222, 232, .3)),
+		url("Capture2.PNG") center/cover;
+	vertical-align: top;
+	margin-top: 9px
+}
+
 
 
 .addEmployee,
-.queueContentArea {
+.queueContentArea,
+.allDataDiv {
 	background-color: #d7dee8;
-	border-radius: 5px;
+	border-radius: 0px;
 	border-bottom: 1px solid black;
 	border-left: 1px solid black;
 	box-shadow: -2px 2px 10px black;
+}
+
+.nameSpan {
+	text-align: center;
 }
 
 .wrapper {
@@ -56,7 +87,7 @@ body {
 	width: 85%;
 	margin: 0 auto;
 	overflow: scroll;
-	position: relative;
+	/*	position: relative;*/
 }
 
 .header {
@@ -113,7 +144,7 @@ h3 {
 	margin: 1% 0 5% 13%;
 	background-color: #d7dee8;
 	padding: 8px;
-	border-radius: 5px;
+	border-radius: 0px;
 	border-bottom: 1px solid black;
 	border-left: 1px solid black;
 	box-shadow: -2px 2px 10px black;
@@ -334,7 +365,7 @@ h3 {
 		height: 25px;
 		font-size: 1.1rem;
 		color: gray;
-		border-radius: 10px;
+		border-radius: 0px;
 	}
 
 	.busTipNotice {

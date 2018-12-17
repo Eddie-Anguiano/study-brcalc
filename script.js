@@ -273,13 +273,10 @@ addButton.addEventListener("click", function () {
 		var li = document.createElement("li");
 
 		li.className = "serverListLI";
-		li.textContent = "Name: " + allData[hourlyServerCount - 1].name + " \xa0\xa0Hours: " + allData[hourlyServerCount - 1].time;
+		li.textContent = "Name: " + allData[hourlyServerCount - 1].name + " \xa0\xa0Hours: " + allData[hourlyServerCount - 1].time.toFixed(2);
 		ul.appendChild(li);
 
 	}
-
-
-
 
 	allData.push({
 		name: employeeName,
@@ -329,11 +326,47 @@ submitHourlybutton.addEventListener("click", function () {
 		calculatePerHour(walkTips, byHourlyEmployeeClaimedTips);
 	}
 
+	function displayAllData() {
+		for (var i = 0; i < allData.length; i++) {
+			var ouputContainer = document.getElementsByClassName("outputContainer")[0];
+			var allDataDiv = document.createElement("div");
+			var nameDiv = document.createElement("div");
+			var hourlyNameIcon = document.createElement("img");
+			var tableDiv = document.createElement("div");
+			var nameOutputDiv = document.createElement("div");
+
+			nameOutputDiv.className = "nameOutputDiv";
+			tableDiv.className = "tableDiv";
+			allDataDiv.className = "allDataDiv";
+			nameDiv.className = "nameDiv";
+			hourlyNameIcon.className = "hourlyNameIcon";
+			hourlyNameIcon.src = "Capture2.PNG";
+
+
+
+
+			nameOutputDiv.innerHTML = allData[i].name;
+			tableDiv.innerHTML = "<table><tr><td>Sales:\xa0\xa0$" + allData[i].byHourlyEmployeeSales.toFixed(2) + "</td><td>Busser Tipped:\xa0\xa0$" + allData[i].byHourlyEmployeeBusTips.toFixed(2) + "</td></tr><tr><td>Tips (Before Tip Out):\xa0\xa0$" + allData[i].byHourlyEmployeeTips.toFixed(2) + "</td><td>Bar Tipped:\xa0\xa0$" + allData[i].byHourlyEmployeeBarTips.toFixed(2) + "</td></tr><tr><td>Cash Owed:\xa0\xa0$" + allData[i].byHourlyEmployeeCashOwed.toFixed(2) + "</td><td>Runners/Expo(s) Tipped:\xa0\xa0$" + allData[i].byHourlyEmployeeExpoTips.toFixed(2) + "</td></tr><tr><td>Claimed Tips:\xa0\xa0$" + allData[i].byHourlyEmployeeClaimedTips.toFixed(2) + "</td><td>Total Tipout:\xa0\xa0$" + allData[i].byHourlyEmployeeTotalTipOut.toFixed(2) + "</td></tr></table>";
+			//			tableDiv.innerHTML += "<tr><td>3</td><td>4</td></tr>";
+			//			tableDiv.innerHTML += "<tr><td>5</td><td>6</td></tr>";
+			//			tableDiv.innerHTML += "<tr><td>7</td><td>8</td></tr></table";
+
+
+
+			ouputContainer.appendChild(allDataDiv);
+			allDataDiv.appendChild(tableDiv);
+			allDataDiv.insertBefore(nameDiv, tableDiv);
+			nameDiv.appendChild(nameOutputDiv);
+			nameDiv.insertBefore(hourlyNameIcon, nameOutputDiv);
+		}
+	}
+
 	getActiveInputs();
 	validateInputArray();
 	convertInputToFloat();
 	calculateTotals();
 	calculateAllPerHours();
+	displayAllData();
 	console.table(allData);
 })
 
