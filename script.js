@@ -267,6 +267,11 @@ addButton.addEventListener("click", function () {
 	validateAddButtonInput();
 	var employeeTime = convertTimeToDecimal(hours, mins);
 
+	function clearAddInputs() {
+		document.getElementById("employeeName").value = "";
+		document.getElementById("hours").value = "";
+		document.getElementById("mins").value = "";
+	}
 
 	function addHours(array) {
 		totalHours = 0;
@@ -314,6 +319,7 @@ addButton.addEventListener("click", function () {
 		addHours(allData);
 		displayHourlyStats();
 		displayServerList();
+		clearAddInputs();
 		//console.table(allData);
 	}
 });
@@ -372,7 +378,7 @@ submitHourlybutton.addEventListener("click", function () {
 			hourlyNameIcon.className = "hourlyNameIcon";
 			hourlyNameIcon.src = "Capture2.PNG";
 
-			nameOutputDiv.innerHTML = allData[i].name;
+			nameOutputDiv.innerHTML = allData[i].name + "\xa0\xa0" + allData[i].time.toFixed(2) + "_hrs";
 			tableDiv.innerHTML = "<table><tr><td>Sales:\xa0\xa0$" + allData[i].byHourlyEmployeeSales.toFixed(2) + "</td><td>Busser Tipped:\xa0\xa0$" + allData[i].byHourlyEmployeeBusTips.toFixed(2) + "</td></tr><tr><td>Tips (Before Tip Out):\xa0\xa0$" + allData[i].byHourlyEmployeeTips.toFixed(2) + "</td><td>Bar Tipped:\xa0\xa0$" + allData[i].byHourlyEmployeeBarTips.toFixed(2) + "</td></tr><tr><td>Cash Owed:\xa0\xa0$" + allData[i].byHourlyEmployeeCashOwed.toFixed(2) + "</td><td>Runners/Expo(s) Tipped:\xa0\xa0$" + allData[i].byHourlyEmployeeExpoTips.toFixed(2) + "</td></tr><tr><td>Claimed Tips:\xa0\xa0$" + allData[i].byHourlyEmployeeClaimedTips.toFixed(2) + "</td><td>Total Tipout:\xa0\xa0$" + allData[i].byHourlyEmployeeTotalTipOut.toFixed(2) + "</td></tr></table>";
 
 			ouputContainer.appendChild(allDataDiv);
