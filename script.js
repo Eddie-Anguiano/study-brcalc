@@ -236,12 +236,22 @@ toggleButton.addEventListener("click", function () {
 		var defaultSpecificClasses = document.getElementsByClassName("defaultSpecific");
 		var hourlySpecificClasses = document.getElementsByClassName("hourlySpecific");
 
-		for (var i = 0; i < hourlySpecificClasses.length; i++) {
-			hourlySpecificClasses[i].style.display = "";
-		}
+		if (hourlySpecificClasses[0].style.display === "none") {
+			for (var i = 0; i < hourlySpecificClasses.length; i++) {
+				hourlySpecificClasses[i].style.display = "";
+			}
 
-		for (var j = 0; j < defaultSpecificClasses.length; j++) {
-			defaultSpecificClasses[j].style.display = "none";
+			for (var j = 0; j < defaultSpecificClasses.length; j++) {
+				defaultSpecificClasses[j].style.display = "none";
+			}
+		} else {
+			for (var k = 0; k < hourlySpecificClasses.length; k++) {
+				hourlySpecificClasses[k].style.display = "none";
+			}
+
+			for (var m = 0; m < defaultSpecificClasses.length; m++) {
+				defaultSpecificClasses[m].style.display = "";
+			}
 		}
 	}
 
@@ -357,7 +367,7 @@ submitHourlybutton.addEventListener("click", function () {
 
 			nameOutputDiv.className = "nameOutputDiv";
 			tableDiv.className = "tableDiv";
-			allDataDiv.className = "allDataDiv";
+			allDataDiv.className = "allDataDiv hourlySpecific";
 			nameDiv.className = "nameDiv";
 			hourlyNameIcon.className = "hourlyNameIcon";
 			hourlyNameIcon.src = "Capture2.PNG";
