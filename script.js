@@ -320,6 +320,7 @@ addButton.addEventListener("click", function () {
 		displayHourlyStats();
 		displayServerList();
 		clearAddInputs();
+		document.getElementById("employeeName").focus();
 		//console.table(allData);
 	}
 });
