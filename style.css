@@ -1,5 +1,6 @@
 * {
-	/*		border: 1px solid red;*/
+	/*			border: 1px solid red;
+			*/
 	font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
 
@@ -174,16 +175,6 @@ h3 {
 	border-top: 1px solid black;
 }
 
-.serverListLI {
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-	list-style-type: none;
-}
-
-.serverList {
-	border-bottom: 0px solid black;
-}
-
 .results {
 	color: darkgoldenrod;
 	padding-left: 7px;
@@ -212,10 +203,7 @@ h3 {
 
 }
 
-#queueId {
-	display: inline;
-	padding: 10px;
-}
+
 
 
 .calc {

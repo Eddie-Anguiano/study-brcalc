@@ -281,18 +281,27 @@ addButton.addEventListener("click", function () {
 	}
 
 	function displayHourlyStats() {
-		var displayStats = document.querySelector(".hourlyStats");
+		var displayStats = document.querySelector(".queueContentArea");
+		var queueServers = document.getElementById("queueServers");
+		var queueHours = document.getElementById("queueHours");
 
-		displayStats.textContent = " \xa0\xa0\xa0\xa0" + hourlyServerCount + " Servers \xa0\xa0\xa0\xa0Total Hours: " + totalHours.toFixed(2);
+		queueServers.textContent = hourlyServerCount + " Servers";
+		queueHours.textContent = "Hours: " + totalHours.toFixed(2);
 	}
 
 	function displayServerList() {
-		var ul = document.querySelector(".serverList");
-		var li = document.createElement("li");
+		var tBody = document.querySelector("#tBody");
+		var tr = document.createElement("tr");
+		var tdName = document.createElement("td");
+		var tdHours = document.createElement("td");
 
-		li.className = "serverListLI";
-		li.textContent = "Name: " + allData[hourlyServerCount - 1].name + " \xa0\xa0Hours: " + allData[hourlyServerCount - 1].time.toFixed(2);
-		ul.appendChild(li);
+		tdName.textContent = allData[hourlyServerCount - 1].name;
+		tdHours.textContent = allData[hourlyServerCount - 1].time.toFixed(2);
+
+		tBody.appendChild(tr);
+		tr.appendChild(tdName);
+		tr.appendChild(tdHours);
+
 
 	}
 
@@ -321,7 +330,6 @@ addButton.addEventListener("click", function () {
 		displayServerList();
 		clearAddInputs();
 		document.getElementById("employeeName").focus();
-		//console.table(allData);
 	}
 });
 submitHourlybutton.addEventListener("click", function () {
@@ -398,7 +406,6 @@ submitHourlybutton.addEventListener("click", function () {
 		calculateAllPerHours();
 		displayAllData();
 		appState = false;
-		console.table(allData);
 	}
 });
 
